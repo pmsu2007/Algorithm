@@ -1,7 +1,7 @@
 /*
 백준 1406번
 
-에디터 (시간 초과)
+에디터
 */
 
 
@@ -86,44 +86,4 @@ L : 기존 스택에서 pop 하고 다른 스택으로 push
 D : 다른 스택에서 pop 하고 기존 스택으로 push
 P x : 기존 스택에 push
 B : 기존 스택에서 pop
-*/
-
-/*
-	std::string s;
-	std::cin >> s;
-
-	int test_case;
-	std::cin >> test_case;
-
-	int index = s.length();
-	while (test_case--)
-	{
-		std::string input;
-		std::cin >> input;
-
-		if (!input.compare(std::string("P")))
-		{
-			std::string item;
-			std::cin >> item;
-			s.insert(index++, item);
-		}
-		else if (!input.compare(std::string("L")))
-		{
-			if (index > 0)
-				index--;
-		}
-		else if (!input.compare(std::string("D")))
-		{
-			if (index < s.length())
-				index++;
-		}
-		else if (!input.compare(std::string("B")))
-		{
-			if (index > 0)
-				s.erase(--index, 1);
-		}
-	}
-
-	std::cout << s ;
-	return 0;
 */
