@@ -14,16 +14,20 @@ DP
 #include <iostream>
 #include <algorithm>
 
-int save[1000000];
+int save[1000001]; // index 1부터 1000000 까지
 
 int DP(int x)
 {
-	save[1] = 0;
+	save[1] = 0; // 1은 연산 X
 	int a, b, c;
 
+	// Bottom-Up 방식
 	for (int i = 2; i <= x; i++)
 	{
 		a = b = c = 1000001;
+
+		// 모든 연산 시도
+
 		if (i % 3 == 0)
 			a = save[i / 3] + 1;
 		if (i % 2 == 0)
@@ -45,7 +49,3 @@ int main()
 	std::cout << save[input] << '\n';
 	return 0;
 }
-
-/*
--1 할 때 3으로 나뉠 때 2로 나뉠 때
-*/
