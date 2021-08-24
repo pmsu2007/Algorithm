@@ -36,7 +36,3 @@ int main()
 			std::cout << i << '\n';
 	}
 }
-
-/* 
-
-*/
