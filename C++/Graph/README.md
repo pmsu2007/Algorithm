@@ -53,21 +53,53 @@
   ```c++
   #include <iostream>
   #include <vector>
+  #include <stack>
   
   // index 0은 사용하지 않으므로 배열 크기를 하나 크게 잡자
   bool visited[9];
   std::vector<int> graph[9];
   
-  void dfs(int x)
+  void dfs(int start) // 재귀 ver.
   {
-      visited[x] = true;
+      visited[start] = true;
       std::cout << x << " ";
-      for (int i = 0; i < graph[x].size(); i++) // 인접 정점만큼 탐색
+      for (int i = 0; i < graph[start].size(); i++) // 인접 정점만큼 탐색
       {
-          int y = graph[x][i]; 
+          int y = graph[start][i]; 
           if(!visited[y]) 
               dfs(y); // 재귀적으로 방문
       }
+  }
+  
+  void dfs(int start) // 스택 ver.
+  {
+  	std::stack<int> s;
+  	s.push(start);
+  	dfs_visited[start] = true;
+  	std::cout << start << " ";
+  
+  	while (!s.empty())
+  	{
+  		int y = s.top(); // 스택의 최상단 노드
+  		
+  		int i;
+  		for (i = 0; i < graph[y].size(); i++)
+  		{
+  			int z = graph[y][i];
+  			if (!dfs_visited[z])
+  			{
+  				dfs_visited[z] = true;
+  				s.push(z); 
+  				std::cout << z << " ";
+  				break;
+  			}
+  
+  			if (i == graph[y].size() - 1) // 모두 방문한 경우
+  			{
+  				s.pop();
+  			}
+  		}
+  	}
   }
   
   int main()
