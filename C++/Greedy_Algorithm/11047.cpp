@@ -4,37 +4,31 @@
 */
 
 #include <iostream>
-#include <algorithm>
+#include <vector>
 
 using namespace std;
 
-int coin[11];
+int N, K;
+
 int main()
 {
-	int N, K;
 	cin >> N >> K;
+	
+	vector<int> money(N);
+
+	for (int i = 0; i < N; i++)
+	{
+		cin >> money[i];
+	}
+
+	int ans = 0;
 
 	for (int i = N - 1; i >= 0; i--)
 	{
-		cin >> coin[i]; // 내림차순
-	}
-	// index 찾기
-	int index = 0;
-	while (index != N - 1)
-	{
-		if (K > coin[index])
-			break;
-		index++;
+		ans += K / money[i];
+		if (K / money[i] != 0)
+			K %= money[i];
 	}
 
-	int count = 0;
-
-	while (K != 0)
-	{
-		count += K / coin[index];
-		K %= coin[index++];
-	}
-	
-	cout << count;
-
+	cout << ans << '\n';
 }
